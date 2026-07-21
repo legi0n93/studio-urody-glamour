@@ -722,27 +722,23 @@ h3 {
 
 .brand-moment-logo {
   position: relative;
-  z-index: 0;
-  display: grid;
-  min-width: 190px;
-  min-height: 104px;
+  display: block;
+  width: min(260px, 82%);
+  height: 180px;
+  overflow: hidden;
   margin: 0 auto 22px;
-  place-items: center;
-  color: var(--rose-light);
-  font-family: var(--serif);
-  font-size: clamp(2rem, 5vw, 2.7rem);
-  font-style: italic;
-  letter-spacing: -0.04em;
 }
 
-.brand-moment-logo::before {
+.brand-moment-logo img {
   position: absolute;
-  z-index: -1;
-  width: 78px;
-  height: 78px;
-  border: 1px solid rgba(174, 139, 86, 0.78);
-  content: "";
-  transform: rotate(45deg);
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: auto;
+  filter: grayscale(1) invert(1) brightness(1.7);
+  mix-blend-mode: screen;
+  opacity: 0.94;
+  transform: translateY(-50%);
 }
 
 .brand-moment-copy p {
