@@ -53,7 +53,7 @@ const typographicElements = document.querySelectorAll(
     ".text-link",
     ".hero-note a",
     ".service-card > a",
-    ".messenger-link",
+    ".messenger-button",
     ".detail-group > a",
   ].join(", ")
 );

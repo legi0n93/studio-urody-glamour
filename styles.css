@@ -84,7 +84,7 @@ h3 {
   .text-link,
   .hero-note a,
   .service-card > a,
-  .messenger-link,
+  .messenger-button,
   .detail-group > a
 ) {
   text-wrap: pretty;
@@ -1142,20 +1142,31 @@ h3 {
   margin-top: 32px;
 }
 
-.messenger-link {
+.messenger-button {
   display: inline-flex;
   gap: 10px;
   align-items: center;
   margin-top: 25px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  font-size: 0.78rem;
+  min-height: 50px;
+  padding: 13px 21px;
+  border-radius: 999px;
+  color: var(--white);
+  background: #0a7cff;
+  box-shadow: 0 10px 26px rgba(10, 124, 255, 0.24);
+  font-size: 0.76rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.035em;
+  transition: background-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
 }
 
-.messenger-link span {
-  color: #79a9ff;
+.messenger-button:hover {
+  background: #086bd9;
+  box-shadow: 0 12px 30px rgba(10, 124, 255, 0.32);
+  transform: translateY(-2px);
+}
+
+.messenger-button img {
+  flex: 0 0 auto;
 }
 
 .contact-details {
