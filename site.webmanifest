@@ -1,0 +1,9 @@
+{
+  "name": "Studio Urody Glamour",
+  "short_name": "Glamour",
+  "lang": "pl",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fffdf9",
+  "theme_color": "#2f2329"
+}
