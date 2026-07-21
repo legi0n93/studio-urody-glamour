@@ -696,12 +696,21 @@ h3 {
 }
 
 .about-copy h2 {
-  font-size: clamp(2.35rem, 7.36vw, 4.6rem);
+  font-size: clamp(2.23rem, 7vw, 4.37rem);
 }
 
 .about-copy p:not(.eyebrow, .signature, .signature-role) {
-  max-width: 560px;
+  max-width: 540px;
   color: var(--ink-soft);
+}
+
+.about-copy .lead-copy {
+  color: #55454d;
+  font-size: 1.38rem;
+}
+
+.about-copy .signature {
+  margin-top: 30px;
 }
 
 .brand-moment {
