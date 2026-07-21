@@ -660,38 +660,6 @@ h3 {
   text-transform: uppercase;
 }
 
-.experience-seal {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  z-index: 3;
-  display: grid;
-  width: 142px;
-  height: 142px;
-  place-content: center;
-  border: 1px solid var(--gold);
-  border-radius: 50%;
-  color: var(--wine);
-  background: var(--ivory);
-  text-align: center;
-  box-shadow: 0 14px 36px rgba(54, 35, 42, 0.1);
-}
-
-.experience-seal span {
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-
-.experience-seal strong {
-  max-width: 100px;
-  font-family: var(--serif);
-  font-size: 1.15rem;
-  font-weight: 400;
-  line-height: 1.1;
-}
-
 .about-copy p:not(.eyebrow, .signature, .signature-role) {
   color: var(--ink-soft);
 }
