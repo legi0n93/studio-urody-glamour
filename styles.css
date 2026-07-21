@@ -97,6 +97,14 @@ h1 {
   letter-spacing: -0.055em;
 }
 
+#hero-title {
+  font-size: clamp(3rem, 8.4vw, 5.75rem);
+}
+
+#hero-title span {
+  display: block;
+}
+
 h2 {
   margin-bottom: 28px;
   font-size: clamp(2.5rem, 8vw, 5rem);
