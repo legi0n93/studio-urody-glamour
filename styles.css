@@ -73,11 +73,20 @@ h3 {
   text-wrap: balance;
 }
 
-p,
-blockquote,
-figcaption,
-address,
-dd {
+:where(
+  p,
+  blockquote,
+  figcaption,
+  address,
+  dt,
+  dd,
+  .button,
+  .text-link,
+  .hero-note a,
+  .service-card > a,
+  .messenger-link,
+  .detail-group > a
+) {
   text-wrap: pretty;
 }
 

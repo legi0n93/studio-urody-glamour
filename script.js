@@ -3,6 +3,19 @@ const nav = document.querySelector("[data-nav]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const year = document.querySelector("[data-year]");
 
+const protectPolishShortWords = (element) => {
+  const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+  let currentNode = walker.nextNode();
+
+  while (currentNode) {
+    currentNode.nodeValue = currentNode.nodeValue.replace(
+      /(^|[\s([{"„])([aiouwzAIUOWZ])\s+(?=\S)/gu,
+      "$1$2\u00a0"
+    );
+    currentNode = walker.nextNode();
+  }
+};
+
 const preventWidow = (element) => {
   const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
   const textNodes = [];
@@ -25,9 +38,30 @@ const preventWidow = (element) => {
   }
 };
 
-document
-  .querySelectorAll("h1, h2, h3, p, blockquote, figcaption, address")
-  .forEach(preventWidow);
+const typographicElements = document.querySelectorAll(
+  [
+    "h1",
+    "h2",
+    "h3",
+    "p",
+    "blockquote",
+    "figcaption",
+    "address",
+    "dt",
+    "dd",
+    ".button",
+    ".text-link",
+    ".hero-note a",
+    ".service-card > a",
+    ".messenger-link",
+    ".detail-group > a",
+  ].join(", ")
+);
+
+typographicElements.forEach((element) => {
+  protectPolishShortWords(element);
+  preventWidow(element);
+});
 
 if (year) {
   year.textContent = new Date().getFullYear();
