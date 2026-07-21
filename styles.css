@@ -1390,12 +1390,12 @@ h3 {
 
 .messenger-button {
   display: inline-flex;
-  gap: 10px;
+  gap: 12px;
   align-items: center;
   margin-top: 28px;
   min-height: 50px;
-  padding: 12px 19px;
-  border: 1px solid rgba(255, 255, 255, 0.27);
+  padding: 11px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius);
   color: rgba(255, 253, 249, 0.9);
   background: rgba(255, 255, 255, 0.025);
@@ -1418,8 +1418,8 @@ h3 {
 
 .contact-guidance {
   max-width: 480px;
-  margin-top: 48px;
-  padding-top: 25px;
+  margin-top: 36px;
+  padding-top: 22px;
   border-top: 1px solid rgba(255, 255, 255, 0.11);
 }
 
@@ -1440,7 +1440,7 @@ h3 {
 
 .contact-details {
   display: grid;
-  gap: 48px;
+  gap: 60px;
   align-content: center;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
