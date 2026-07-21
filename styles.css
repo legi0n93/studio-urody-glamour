@@ -98,7 +98,7 @@ h1 {
 }
 
 #hero-title {
-  font-size: clamp(3rem, 8.4vw, 5.75rem);
+  font-size: clamp(2.65rem, 7.2vw, 5rem);
 }
 
 #hero-title span {
