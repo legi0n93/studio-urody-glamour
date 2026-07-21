@@ -2038,6 +2038,33 @@ h3 {
   }
 }
 
+@media (min-width: 1200px) {
+  .hero-media {
+    left: -48px;
+  }
+
+  .hero-watermark {
+    top: 28%;
+    color: rgba(73, 48, 57, 0.0165);
+  }
+
+  .hero-portrait figcaption {
+    font-size: 1.06rem;
+  }
+
+  .hero-note {
+    font-size: 0.91rem;
+  }
+
+  .rating-stars {
+    font-size: 0.84rem;
+  }
+
+  .strip-grid p {
+    font-size: 0.78rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
