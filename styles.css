@@ -630,30 +630,36 @@ h3 {
   position: relative;
   z-index: 2;
   border-top: 1px solid var(--border);
-  background: rgba(255, 253, 249, 0.58);
+  background: rgba(248, 243, 237, 0.82);
 }
 
 .strip-grid {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .strip-grid p {
   display: flex;
-  gap: 15px;
   align-items: center;
+  gap: 16px;
   margin: 0;
-  padding: 17px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 0.72rem;
+  padding: 24px 0;
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.065em;
+  line-height: 1.35;
   text-transform: uppercase;
 }
 
+.strip-grid p + p {
+  border-top: 1px solid var(--border);
+}
+
 .strip-grid span {
+  flex: 0 0 auto;
   color: var(--gold);
   font-family: var(--serif);
-  font-size: 1rem;
+  font-size: 1.08rem;
   font-style: italic;
 }
 
@@ -1803,20 +1809,6 @@ h3 {
     padding-block: 120px;
   }
 
-  .strip-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .strip-grid p {
-    padding: 22px 18px;
-    border-right: 1px solid var(--border);
-    border-bottom: 0;
-  }
-
-  .strip-grid p:first-child {
-    padding-left: 0;
-  }
-
   .service-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1837,6 +1829,44 @@ h3 {
     grid-auto-columns: calc((100% - 18px) / 2);
   }
 
+}
+
+@media (min-width: 900px) {
+  .strip-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .strip-grid p {
+    position: relative;
+    justify-content: center;
+    padding: 24px 18px;
+    white-space: nowrap;
+  }
+
+  .strip-grid p + p {
+    border-top: 0;
+  }
+
+  .strip-grid p + p::before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 1px;
+    height: 40px;
+    background: var(--border);
+    content: "";
+    transform: translateY(-50%);
+  }
+
+  .strip-grid p:first-child {
+    justify-content: flex-start;
+    padding-left: 0;
+  }
+
+  .strip-grid p:last-child {
+    justify-content: flex-end;
+    padding-right: 0;
+  }
 }
 
 @media (min-width: 900px) {
@@ -2098,7 +2128,7 @@ h3 {
   }
 
   .strip-grid p {
-    font-size: 0.78rem;
+    font-size: 0.84rem;
   }
 }
 
