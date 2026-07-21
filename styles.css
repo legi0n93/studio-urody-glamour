@@ -645,7 +645,7 @@ h3 {
   margin: 0;
   padding: 24px 0;
   font-size: 0.78rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.065em;
   line-height: 1.35;
   text-transform: uppercase;
@@ -657,10 +657,11 @@ h3 {
 
 .strip-grid span {
   flex: 0 0 auto;
-  color: var(--gold);
+  color: #a17d49;
   font-family: var(--serif);
-  font-size: 1.08rem;
+  font-size: 1.17rem;
   font-style: italic;
+  line-height: 1.25;
 }
 
 .about {
@@ -1852,7 +1853,7 @@ h3 {
     top: 50%;
     left: 0;
     width: 1px;
-    height: 40px;
+    height: 32px;
     background: var(--border);
     content: "";
     transform: translateY(-50%);
