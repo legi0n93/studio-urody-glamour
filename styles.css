@@ -705,12 +705,22 @@ h3 {
 }
 
 .about-copy .lead-copy {
-  color: #4d3d45;
+  color: #483840;
   font-size: 1.38rem;
+}
+
+.about-copy > p:not(.eyebrow, .lead-copy, .signature, .signature-role) {
+  font-size: 1.06rem;
 }
 
 .about-copy .signature {
   margin-top: 30px;
+  font-size: 1.65rem;
+}
+
+.about-copy .signature-role {
+  font-size: 0.71rem;
+  letter-spacing: 0.1em;
 }
 
 .brand-moment {
