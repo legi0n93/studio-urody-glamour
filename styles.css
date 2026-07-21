@@ -70,6 +70,15 @@ h3 {
   font-family: var(--serif);
   font-weight: 400;
   line-height: 1.04;
+  text-wrap: balance;
+}
+
+p,
+blockquote,
+figcaption,
+address,
+dd {
+  text-wrap: pretty;
 }
 
 h1 {
@@ -470,7 +479,6 @@ h3 {
   position: relative;
   width: min(100%, 520px);
   justify-self: center;
-  padding-bottom: 34px;
 }
 
 .hero-portrait {
@@ -479,37 +487,6 @@ h3 {
   justify-self: center;
   border-radius: 46% 46% 3px 3px;
   box-shadow: var(--shadow);
-}
-
-.hero-detail-card {
-  position: absolute;
-  bottom: 0;
-  left: -10px;
-  z-index: 3;
-  display: grid;
-  grid-template-columns: 64px 1fr;
-  width: min(230px, 68%);
-  min-height: 78px;
-  padding: 8px;
-  align-items: center;
-  gap: 12px;
-  border: 1px solid rgba(174, 139, 86, 0.42);
-  background: rgba(255, 253, 249, 0.96);
-  box-shadow: 0 16px 42px rgba(54, 35, 42, 0.16);
-  backdrop-filter: blur(10px);
-}
-
-.hero-detail-card img {
-  width: 64px;
-  height: 64px;
-  object-fit: cover;
-}
-
-.hero-detail-card span {
-  color: var(--wine);
-  font-family: var(--serif);
-  font-size: 0.94rem;
-  line-height: 1.25;
 }
 
 .hero-portrait::after {
@@ -1482,10 +1459,6 @@ h3 {
 
   .hero-portrait {
     min-height: 610px;
-  }
-
-  .hero-detail-card {
-    left: -42px;
   }
 
   .brand-moment {

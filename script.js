@@ -3,6 +3,32 @@ const nav = document.querySelector("[data-nav]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const year = document.querySelector("[data-year]");
 
+const preventWidow = (element) => {
+  const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+  const textNodes = [];
+  let currentNode = walker.nextNode();
+
+  while (currentNode) {
+    if (currentNode.nodeValue.trim()) textNodes.push(currentNode);
+    currentNode = walker.nextNode();
+  }
+
+  for (let index = textNodes.length - 1; index >= 0; index -= 1) {
+    const node = textNodes[index];
+    const value = node.nodeValue;
+    const ending = value.match(/(\S+)(\s+)(\S+)(\s*)$/u);
+
+    if (!ending) continue;
+
+    node.nodeValue = `${value.slice(0, ending.index)}${ending[1]}\u00a0${ending[3]}${ending[4]}`;
+    break;
+  }
+};
+
+document
+  .querySelectorAll("h1, h2, h3, p, blockquote, figcaption, address")
+  .forEach(preventWidow);
+
 if (year) {
   year.textContent = new Date().getFullYear();
 }
