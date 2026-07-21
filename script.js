@@ -109,8 +109,24 @@ if (reviewsCarousel) {
   let reviewTimer;
   let reviewScrollTimer;
 
+  const getVisibleReviewCount = () => {
+    if (!reviewTrack || reviewCards.length === 0) return 1;
+    return Math.max(
+      1,
+      Math.min(reviewCards.length, Math.round(reviewTrack.clientWidth / reviewCards[0].offsetWidth))
+    );
+  };
+
+  const getLastReviewIndex = () => Math.max(0, reviewCards.length - getVisibleReviewCount());
+
   const updateReviewStatus = () => {
-    if (reviewStatus) reviewStatus.textContent = `${reviewIndex + 1} z ${reviewCards.length}`;
+    if (!reviewStatus) return;
+    const visibleReviews = getVisibleReviewCount();
+    const firstVisible = reviewIndex + 1;
+    const lastVisible = Math.min(reviewIndex + visibleReviews, reviewCards.length);
+    reviewStatus.textContent = visibleReviews > 1
+      ? `${firstVisible}–${lastVisible} z ${reviewCards.length}`
+      : `${firstVisible} z ${reviewCards.length}`;
   };
 
   const getReviewOffset = (card) => card.offsetLeft - reviewTrack.offsetLeft;
@@ -118,7 +134,12 @@ if (reviewsCarousel) {
   const goToReview = (nextIndex, animate = true) => {
     if (!reviewTrack || reviewCards.length === 0) return;
 
-    reviewIndex = (nextIndex + reviewCards.length) % reviewCards.length;
+    const lastReviewIndex = getLastReviewIndex();
+    reviewIndex = nextIndex > lastReviewIndex
+      ? 0
+      : nextIndex < 0
+        ? lastReviewIndex
+        : nextIndex;
     reviewTrack.scrollTo({
       left: getReviewOffset(reviewCards[reviewIndex]),
       behavior: animate && !prefersReducedMotion ? "smooth" : "auto",
@@ -175,7 +196,10 @@ if (reviewsCarousel) {
   reviewsCarousel.addEventListener("focusin", stopReviewAutoplay);
   reviewsCarousel.addEventListener("focusout", startReviewAutoplay);
   document.addEventListener("visibilitychange", startReviewAutoplay);
-  window.addEventListener("resize", () => goToReview(reviewIndex, false));
+  window.addEventListener("resize", () => {
+    reviewIndex = Math.min(reviewIndex, getLastReviewIndex());
+    goToReview(reviewIndex, false);
+  });
 
   updateReviewStatus();
   startReviewAutoplay();
