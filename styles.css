@@ -253,6 +253,7 @@ h3 {
   width: 100%;
   height: auto;
   filter: saturate(1.08) contrast(1.04);
+  mix-blend-mode: multiply;
   transform: translateY(-34%);
 }
 
