@@ -1,3 +1,57 @@
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/cormorant-garamond-400-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/cormorant-garamond-400-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/cormorant-garamond-400-italic-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/cormorant-garamond-400-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-700-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("assets/fonts/inter-400-700-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+2000-206F, U+20AC, U+2122, U+FEFF, U+FFFD;
+}
+
 :root {
   --ink: #30242a;
   --ink-soft: #675961;
@@ -13,7 +67,7 @@
   --border: rgba(73, 48, 57, 0.16);
   --shadow: 0 24px 70px rgba(54, 35, 42, 0.13);
   --radius: 3px;
-  --serif: Georgia, "Times New Roman", serif;
+  --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -616,51 +670,30 @@ h3 {
 .about-visual {
   position: relative;
   width: min(100%, 530px);
-  min-height: 460px;
   margin-inline: auto;
 }
 
 .about-card {
-  position: absolute;
-  inset: 0 44px 32px 0;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
   background:
     linear-gradient(150deg, rgba(121, 84, 87, 0.34), rgba(239, 225, 217, 0.54)),
     var(--rose-light);
-  box-shadow: var(--shadow);
+  box-shadow: 0 24px 70px rgba(54, 35, 42, 0.0975);
 }
 
 .about-card img {
-  object-position: center;
+  object-fit: cover;
+  object-position: var(--about-image-position, center center);
 }
 
-.about-card::after {
-  position: absolute;
-  inset: 55% 0 0;
-  border: 0;
-  border-radius: 0;
-  background: linear-gradient(to bottom, transparent, rgba(42, 27, 32, 0.62));
-  content: "";
-}
-
-.about-card::before,
-.about-card::after {
-  border-color: rgba(73, 48, 57, 0.14);
-}
-
-.placeholder-label {
-  position: absolute;
-  bottom: 25px;
-  left: 25px;
-  z-index: 2;
-  color: var(--ivory);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.13em;
-  text-shadow: 0 2px 12px rgba(43, 32, 37, 0.72);
-  text-transform: uppercase;
+.about-copy h2 {
+  font-size: clamp(2.35rem, 7.36vw, 4.6rem);
 }
 
 .about-copy p:not(.eyebrow, .signature, .signature-role) {
+  max-width: 560px;
   color: var(--ink-soft);
 }
 
@@ -1884,15 +1917,6 @@ h3 {
     min-height: 380px;
   }
 
-  .about-grid {
-    grid-template-columns: minmax(400px, 0.9fr) minmax(0, 1fr);
-    gap: 100px;
-  }
-
-  .about-visual {
-    min-height: 610px;
-  }
-
   .section-heading {
     grid-template-columns: minmax(0, 1fr) minmax(300px, 0.48fr);
     align-items: end;
@@ -2025,6 +2049,15 @@ h3 {
     white-space: nowrap;
   }
 
+  .about-grid {
+    grid-template-columns: minmax(400px, 0.65fr) minmax(0, 1fr);
+    gap: 64px;
+  }
+
+  .about-visual {
+    min-height: 0;
+  }
+
   .main-nav {
     gap: 36px;
   }
@@ -2039,6 +2072,10 @@ h3 {
 }
 
 @media (min-width: 1200px) {
+  .about-copy h2 {
+    width: calc(100% + 40px);
+  }
+
   .hero-media {
     left: -48px;
   }
