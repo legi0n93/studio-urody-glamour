@@ -97,6 +97,90 @@ updateHeader();
 window.addEventListener("scroll", updateHeader, { passive: true });
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const reviewsCarousel = document.querySelector("[data-reviews-carousel]");
+
+if (reviewsCarousel) {
+  const reviewTrack = reviewsCarousel.querySelector("[data-review-track]");
+  const reviewCards = Array.from(reviewTrack?.querySelectorAll(".review-card") ?? []);
+  const reviewPrev = reviewsCarousel.querySelector("[data-review-prev]");
+  const reviewNext = reviewsCarousel.querySelector("[data-review-next]");
+  const reviewStatus = reviewsCarousel.querySelector("[data-review-status]");
+  let reviewIndex = 0;
+  let reviewTimer;
+  let reviewScrollTimer;
+
+  const updateReviewStatus = () => {
+    if (reviewStatus) reviewStatus.textContent = `${reviewIndex + 1} z ${reviewCards.length}`;
+  };
+
+  const getReviewOffset = (card) => card.offsetLeft - reviewTrack.offsetLeft;
+
+  const goToReview = (nextIndex, animate = true) => {
+    if (!reviewTrack || reviewCards.length === 0) return;
+
+    reviewIndex = (nextIndex + reviewCards.length) % reviewCards.length;
+    reviewTrack.scrollTo({
+      left: getReviewOffset(reviewCards[reviewIndex]),
+      behavior: animate && !prefersReducedMotion ? "smooth" : "auto",
+    });
+    updateReviewStatus();
+  };
+
+  const stopReviewAutoplay = () => window.clearInterval(reviewTimer);
+
+  const startReviewAutoplay = () => {
+    stopReviewAutoplay();
+    if (prefersReducedMotion || reviewCards.length < 2 || document.hidden) return;
+    reviewTimer = window.setInterval(() => goToReview(reviewIndex + 1), 7000);
+  };
+
+  reviewPrev?.addEventListener("click", () => {
+    goToReview(reviewIndex - 1);
+    startReviewAutoplay();
+  });
+
+  reviewNext?.addEventListener("click", () => {
+    goToReview(reviewIndex + 1);
+    startReviewAutoplay();
+  });
+
+  reviewTrack?.addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    goToReview(reviewIndex + (event.key === "ArrowRight" ? 1 : -1));
+    startReviewAutoplay();
+  });
+
+  reviewTrack?.addEventListener(
+    "scroll",
+    () => {
+      window.clearTimeout(reviewScrollTimer);
+      reviewScrollTimer = window.setTimeout(() => {
+        const closestIndex = reviewCards.reduce((closest, card, index) => {
+          const currentDistance = Math.abs(getReviewOffset(card) - reviewTrack.scrollLeft);
+          const closestDistance = Math.abs(
+            getReviewOffset(reviewCards[closest]) - reviewTrack.scrollLeft
+          );
+          return currentDistance < closestDistance ? index : closest;
+        }, 0);
+        reviewIndex = closestIndex;
+        updateReviewStatus();
+      }, 120);
+    },
+    { passive: true }
+  );
+
+  reviewsCarousel.addEventListener("pointerenter", stopReviewAutoplay);
+  reviewsCarousel.addEventListener("pointerleave", startReviewAutoplay);
+  reviewsCarousel.addEventListener("focusin", stopReviewAutoplay);
+  reviewsCarousel.addEventListener("focusout", startReviewAutoplay);
+  document.addEventListener("visibilitychange", startReviewAutoplay);
+  window.addEventListener("resize", () => goToReview(reviewIndex, false));
+
+  updateReviewStatus();
+  startReviewAutoplay();
+}
+
 const revealElements = document.querySelectorAll("[data-reveal]");
 
 if (prefersReducedMotion || !("IntersectionObserver" in window)) {

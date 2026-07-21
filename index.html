@@ -17,7 +17,7 @@
       content="Studio Urody Glamour w Radomiu. Zabiegi i makijaż dopasowane do Ciebie."
     >
     <title>Studio Urody Glamour Radom | Agnieszka Mazur-Domańska</title>
-    <link rel="stylesheet" href="styles.css?v=20260721-4">
+    <link rel="stylesheet" href="styles.css?v=20260721-5">
     <link rel="manifest" href="site.webmanifest">
     <script type="application/ld+json">
       {
@@ -450,7 +450,13 @@
             powroty klientek są dla mnie najważniejszym potwierdzeniem jakości mojej pracy.
           </p>
 
-          <div class="review-grid">
+          <div class="reviews-carousel" data-reviews-carousel>
+            <div
+              class="review-grid"
+              data-review-track
+              tabindex="0"
+              aria-label="Opinie klientek — przewijana lista"
+            >
             <figure class="review-card" data-reveal>
               <blockquote>
                 „Przychodzę regularnie od 10 lat. (…) Z całego serca polecam.”
@@ -469,16 +475,13 @@
                 <span>opinia Google</span>
               </figcaption>
             </figure>
-            <figure class="review-card review-card-facebook" data-reveal>
-              <blockquote>
-                „Serdecznie polecam Panią Agnieszkę. Jest bardzo ciepłą i serdeczną
-                osobą z wieloletnim doświadczeniem w zawodzie.”
-              </blockquote>
-              <figcaption>
-                <span>Martika Chustecka</span>
-                <span>opinia Facebook</span>
-              </figcaption>
-            </figure>
+            </div>
+
+            <div class="reviews-controls" role="group" aria-label="Sterowanie opiniami">
+              <button type="button" data-review-prev aria-label="Poprzednia opinia">←</button>
+              <p data-review-status aria-live="polite">1 z 2</p>
+              <button type="button" data-review-next aria-label="Następna opinia">→</button>
+            </div>
           </div>
 
           <div class="reviews-links" data-reveal>
@@ -603,6 +606,6 @@
       <a href="https://m.me/100055386054228" target="_blank" rel="noopener noreferrer">Messenger</a>
     </nav>
 
-    <script src="script.js?v=20260721-2" defer></script>
+    <script src="script.js?v=20260721-3" defer></script>
   </body>
 </html>
