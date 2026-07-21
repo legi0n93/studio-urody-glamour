@@ -643,10 +643,11 @@ h3 {
   bottom: 25px;
   left: 25px;
   z-index: 2;
-  color: var(--wine);
+  color: var(--ivory);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.13em;
+  text-shadow: 0 2px 12px rgba(43, 32, 37, 0.72);
   text-transform: uppercase;
 }
 
@@ -1066,15 +1067,6 @@ h3 {
 
 .gallery-item-makeup > img {
   object-position: center;
-}
-
-.gallery-source {
-  max-width: 720px;
-  margin: 18px 0 0 auto;
-  color: var(--muted);
-  font-size: 0.76rem;
-  line-height: 1.7;
-  text-align: right;
 }
 
 .reviews {
